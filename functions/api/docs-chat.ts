@@ -96,9 +96,9 @@ const maxOutputTokens = (value: string | undefined) => {
 }
 
 const textFromMessage = (message?: UIMessage) =>
-  message.parts
-    ?.map(part => (part.type === 'text' ? part.text : ''))
-    .join('') || ''
+  message?.parts
+    ?.map(part => (part?.type === 'text' ? part.text : ''))
+    .join('') ?? ''
 
 const lastUserText = (messages: UIMessage[]) =>
   textFromMessage([...messages].reverse().find(message => message.role === 'user'))
